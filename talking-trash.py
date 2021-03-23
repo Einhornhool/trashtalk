@@ -7,10 +7,7 @@ import os
 import random
 
 # Create a list of all available audio files in the directory 'audio'
-audiofiles = []
-for r,d,f in os.walk('/home/pi/trash_talk/audio'):
-    for fi in f:
-        audiofiles.append(os.path.join(r, fi))
+audiofiles = [os.path.join(r,fi) for r,d,f in os.walk('/home/pi/trash_talk/audio') for fi in f]
 
 # Create a list of WaveObjects from the available audiofiles
 audio_obj = [sa.WaveObject.from_wave_file(f) for f in audiofiles]
